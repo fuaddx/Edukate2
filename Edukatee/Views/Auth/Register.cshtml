@@ -1,0 +1,161 @@
+﻿@model RegisterVm;
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Register</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        .field-icon {
+            float: right;
+            margin-left: -25px;
+            margin-top: -35px;
+            position: relative;
+            z-index: 2;
+            font-size:23px;
+            padding-right:40px;
+        }
+
+        .container {
+            padding-top: 50px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            <form asp-action="Register" class="user" method="post">
+                                <div class="form-group">
+                                        <label asp-for="Name"></label>
+                                        <input asp-for="Name"  type="text" class="form-control form-control-user"
+                                               placeholder="First Name">
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                        <label asp-for="Surname"></label>
+                                        <input asp-for="Surname"  type="text" class="form-control form-control-user"
+                                               placeholder="Last Name">
+                                        <span asp-validation-for="Surname" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                        <label asp-for="Username"></label>
+                                        <input asp-for="Username" type="text" class="form-control form-control-user"
+                                           placeholder="Username">
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                        <label asp-for="Email"></label>
+                                        <input asp-for="Email" type="text" class="form-control form-control-user"
+                                               placeholder="Email">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password"></label>
+                                    <input asp-for="Password" class="form-control form-control-user"  id="password-field" type="password" class="form-control" name="password" placeholder="Password">
+                                  <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PasswordConfirm"></label>
+                                    <input asp-for="PasswordConfirm" class="form-control form-control-user"
+                                           placeholder="PasswordConfirm">
+                                    <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+                                </div>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                </br>
+                                @if (ViewBag.RegistrationSuccess !=null && (bool)ViewBag.RegistrationSuccess)
+                                {
+                                    <p class="text-success" style="text-align:center;font-size:20px;">Register Succesfully!</p>
+                                    <br/>
+                                    <button class="btn btn-primary btn-user btn-block">
+                                        Register Account
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-primary btn-user btn-block">
+                                        Register Account
+                                    </button>
+                                }
+                                <hr>
+                                <a href="index.html" class="btn btn-google btn-user btn-block">
+                                    <i class="fab fa-google fa-fw"></i> Register with Google
+                                </a>
+                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                </a>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" asp-action="Login">Already have an account? Login!</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" asp-area="Home" asp-controller="Home" asp-action="Index">Go Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/admin/js/sb-admin-2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+        $(".toggle-password").click(function () {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+        </script>
+    
+</body>
+
+</html>

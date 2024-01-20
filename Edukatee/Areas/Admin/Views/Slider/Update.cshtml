@@ -1,0 +1,51 @@
+﻿@model SliderUpdateVm
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <form asp-action="Update" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" class="form-control">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profession"></label>
+                        <input asp-for="Profession" class="form-control">
+                        <span asp-validation-for="Profession" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MainIMage"></label>
+                        <br/>
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                        {
+                            <td ><img style="width:18%" src="~/Assets/images/stories/@Model.ImageUrl" /></td>
+                        }
+                        else
+                        {
+                            <td ><img style="width:18%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiQc9dZn33Wnk-j0sXZ19f8NiMZpJys7nTlA&usqp=CAU" /></td>
+                        }
+                        <input asp-for="MainIMage" class="form-control">
+                        <span asp-validation-for="MainIMage" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-success">
+                        Update
+                    </button>
+                    <a asp-action="Cancel" class="btn btn-danger">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

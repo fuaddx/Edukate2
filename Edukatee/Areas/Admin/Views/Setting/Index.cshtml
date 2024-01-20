@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SettingListItemVm>
+@{
+	ViewData["Title"] = "Index";
+}
+
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header">
+		</div>
+		<div class="card-body" id="dataTable">
+			<div class="table-responsive">
+				<table class="table table-bordered" width="100%">
+					<thead>
+						<tr>
+							<th class="text-center">Email</th>
+							<th class="text-center">Address</th>
+							<th class="text-center">PhoneNumber</th>
+							<th class="text-center">UpdatedTime</th>
+							<th class="text-center" >Action</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td class="text-center">@item.Email</td>
+								<td class="text-center">@item.Address</td>
+								<td class="text-center">@item.PhoneNumber</td>
+								<td class="text-center">@(item.UpdatedTime != null ? item.UpdatedTime.ToString() : "No Update")</td>
+								<td class="text-center"><a asp-action="Update" class=" btn btn-outline-info" asp-route-id="@item.Id">Update</a></td>
+							</tr>
+						}
+
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+</div>

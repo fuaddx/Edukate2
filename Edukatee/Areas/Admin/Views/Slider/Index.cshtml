@@ -1,0 +1,32 @@
+﻿@model PaginationVm<IEnumerable<SliderListItemVm>>
+@{
+	ViewData["Title"] = "Index";
+}
+@section scripts{
+	<script>
+		$("#dataTable").on("click","#prod-pag a",function(ev){
+			ev.preventDefault();
+			fetch($(this).attr("href"))
+			.then(res=>res.text())
+			.then(data=>$("#dataTable").html(data))
+		})
+	</script>
+}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<a asp-action="Create" class="btn btn-success">Create</a>
+		</div>
+		<div class="card-body" id="dataTable">
+			<partial model="Model" name="ProductPagination" />
+		</div>
+	</div>
+
+</div>
+<!-- /.container-fluid -->

@@ -1,0 +1,43 @@
+﻿
+@model SliderCreateItemVm
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <form  asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input  asp-for="Title" class="form-control">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Profession"></label>
+                        <input asp-for="Profession" class="form-control">
+                        <span asp-validation-for="Profession" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MainIMage"></label>
+                        <input asp-for="MainIMage" class="form-control">
+                        <span asp-validation-for="MainIMage"></span>
+                    </div>
+                    <button  class="btn btn-success">
+                        Create
+                    </button>
+                    <a asp-action="Cancel" class="btn btn-danger">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
